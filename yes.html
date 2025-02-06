@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! 🎉❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffccdc;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 10vh;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+        .btn {
+            font-size: 2rem;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            background-color: #ff4d6d;
+            color: white;
+            margin-top: 20px;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        .btn:hover {
+            background-color: #e63950;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 40%;
+            max-width: 500px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+        }
+        @keyframes hearts {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(2); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 2rem;
+            color: red;
+            animation: hearts 3s linear infinite;
+        }
+        @keyframes firecracker {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .firecracker {
+            position: absolute;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            animation: firecracker 2s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Added text with emojis above the image -->
+        <h1>Congratulationsss Weee Anaya! 🎉🎊🎈💖🎉💐</h1>
+
+        <div class="image-container">
+            <img src="anaya.jpg" alt="Congratulationsss Weee Anaya!">
+        </div>
+
+        <button class="btn" onclick="playMusic()">Click Here 🎶</button>
+        <audio id="song" src="perfect.mp3"></audio>
+        <canvas class="fireworks"></canvas>
+    </div>
+    <script>
+        function playMusic() {
+            let song = document.getElementById('song');
+            song.play();
+            startFirecrackers();
+            launchSingleFirework();
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.textContent = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 3000);
+        }
+        setInterval(createHeart, 300);
+
+        function startFirecrackers() {
+            const confetti = new JSConfetti();
+            confetti.addConfetti();
+        }
+
+        function launchSingleFirework() {
+            const firecracker = document.createElement("div");
+            firecracker.classList.add("firecracker");
+            firecracker.style.left = Math.random() * 100 + "vw";
+            firecracker.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            firecracker.style.animationDuration = "2s";
+            document.body.appendChild(firecracker);
+            setTimeout(() => { firecracker.remove(); }, 2000);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</body>
+</html>

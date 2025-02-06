@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? ❤️🥰💖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffccdc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            cursor: url('clicking.png'), auto; /* Heart cursor */
+        }
+
+        .container {
+            margin-top: 15vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #d63384;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #yes {
+            background-color: #28a745; /* Green for Yes */
+            color: white;
+            margin-right: 20px;
+        }
+
+        #no {
+            background-color: #dc3545; /* Red for No */
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        /* Flexbox layout for side-by-side images */
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .gif-container img {
+            width: 300px; /* Adjust size */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-right: 20px; /* Space between the two images */
+        }
+
+        /* Additional styling for the second image */
+        .gif-container img.second-image {
+            margin-right: 0; /* No margin for the second image */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? ❤️🥰💖</h1>
+        <div class="btn-container">
+            <button id="yes" class="btn" onclick="goToYesPage()">Yes 😍</button>
+            <button id="no" class="btn" onclick="changeNoText()">No 😭</button>
+        </div>
+
+        <!-- Images side by side -->
+        <div class="gif-container">
+            <img src="bubu.gif" alt="Cute Bubu Gif">
+            <img class="second-image" src="dudu.jpg" alt="Another Image">
+        </div>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById('yes');
+        let noButton = document.getElementById('no');
+        let noTexts = [
+            "Are you sure? 🥺", "Really sure?? 😢", "Are you Positive??? 😭", "Please Pookie 🥹❤️", 
+            "Just think about it! 🤔💖", "If you say no, I will be really sad 😞💔", 
+            "I will be very sad! 😭💔", "I will be very very sad! 😭😭💔"
+        ];
+        let noIndex = 0;
+        let yesSize = 1.5;
+
+        function changeNoText() {
+            if (noIndex < noTexts.length) {
+                noButton.textContent = noTexts[noIndex];
+                noIndex++;
+                yesSize *= 1.5;
+                yesButton.style.fontSize = `${yesSize}rem`;
+            } else {
+                yesButton.style.fontSize = "75vw";
+                noButton.style.display = "none";
+            }
+        }
+
+        function goToYesPage() {
+            window.location.href = "yes.html";
+        }
+    </script>
+</body>
+</html>
